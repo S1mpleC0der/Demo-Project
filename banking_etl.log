@@ -1,0 +1,81 @@
+2025-05-07 21:00:32,976 - INFO - Running ETL with insert mode: SKIP_EXISTING
+2025-05-07 21:00:32,976 - INFO - Processing t01.csv → users
+2025-05-07 21:00:32,983 - INFO - Loaded 600 rows from t01.csv
+2025-05-07 21:00:32,984 - INFO - Renamed 8 columns in users: 01-00 → id, 01-01 → name, 01-02 → phone_number, 01-03 → email, 01-04 → created_at, 01-05 → last_active_at, 01-07 → is_vip, 01-08 → total_balance
+2025-05-07 21:00:32,986 - INFO - Schema adjustments: id → user_id, name → full_name, phone_number → phone
+2025-05-07 21:00:33,057 - INFO - Retrieved schema for users: user_id, full_name, phone, email, created_at, last_active_at, is_vip, total_balance
+2025-05-07 21:00:33,074 - INFO - Converted created_at to datetime, fixed 0 invalid values
+2025-05-07 21:00:33,078 - ERROR - Error cleaning data for users: bad character range \s-( at position 5
+2025-05-07 21:00:33,081 - INFO - Retrieved schema for users: user_id, full_name, phone, email, created_at, last_active_at, is_vip, total_balance
+2025-05-07 21:00:33,086 - WARNING - Filtered out 600 rows with existing primary keys in users
+2025-05-07 21:00:33,087 - WARNING - No rows to insert after filtering for users
+2025-05-07 21:00:33,091 - INFO - Recorded metadata for t01.csv: 0/600 rows, 600 errors
+2025-05-07 21:00:33,092 - INFO - Completed t01.csv to users: 0/600 rows, 600 errors in 0.12 seconds
+2025-05-07 21:00:33,092 - INFO - Processing t02.csv → cards
+2025-05-07 21:00:33,100 - INFO - Loaded 1200 rows from t02.csv
+2025-05-07 21:00:33,101 - INFO - Renamed 7 columns in cards: 02-00 → id, 02-01 → user_id, 02-02 → card_number, 02-03 → balance, 02-05 → created_at, 02-06 → card_type, 02-07 → limit_amount
+2025-05-07 21:00:33,102 - INFO - Schema adjustments: id → card_id
+2025-05-07 21:00:33,106 - INFO - Retrieved schema for cards: card_id, user_id, card_number, balance, created_at, card_type, limit_amount, exceeds_limit
+2025-05-07 21:00:33,114 - INFO - Converted created_at to datetime, fixed 0 invalid values
+2025-05-07 21:00:33,115 - INFO - Flagged 844 cards exceeding their limit
+2025-05-07 21:00:33,116 - INFO - Data validation for cards: {'total': 1200, 'date_corrections': 0, 'email_corrections': 0, 'phone_corrections': 0, 'flags_added': np.int64(844)}
+2025-05-07 21:00:33,120 - INFO - Retrieved schema for cards: card_id, user_id, card_number, balance, created_at, card_type, limit_amount, exceeds_limit
+2025-05-07 21:00:33,125 - WARNING - Filtered out 1200 rows with existing primary keys in cards
+2025-05-07 21:00:33,126 - WARNING - No rows to insert after filtering for cards
+2025-05-07 21:00:33,129 - INFO - Recorded metadata for t02.csv: 0/1200 rows, 1200 errors
+2025-05-07 21:00:33,130 - INFO - Completed t02.csv to cards: 0/1200 rows, 1200 errors in 0.04 seconds
+2025-05-07 21:00:33,131 - INFO - Processing t03.csv → transactions
+2025-05-07 21:00:33,141 - INFO - Loaded 3000 rows from t03.csv
+2025-05-07 21:00:33,143 - INFO - Renamed 7 columns in transactions: 03-00 → id, 03-01 → from_card_id, 03-02 → to_card_id, 03-03 → amount, 03-04 → status, 03-05 → created_at, 03-06 → transaction_type
+2025-05-07 21:00:33,145 - INFO - Dropped columns not in schema: to_card_id
+2025-05-07 21:00:33,146 - INFO - Schema adjustments: id → transaction_id, from_card_id → card_id, created_at → transaction_date
+2025-05-07 21:00:33,149 - INFO - Retrieved schema for transactions: transaction_id, card_id, amount, status, transaction_date, transaction_type, flag_large_amount
+2025-05-07 21:00:33,162 - INFO - Converted transaction_date to datetime, fixed 0 invalid values
+2025-05-07 21:00:33,165 - INFO - Flagged 2998 large transactions (>10000)
+2025-05-07 21:00:33,166 - INFO - Data validation for transactions: {'total': 3000, 'date_corrections': 0, 'email_corrections': 0, 'phone_corrections': 0, 'flags_added': np.int64(2998)}
+2025-05-07 21:00:33,171 - INFO - Retrieved schema for transactions: transaction_id, card_id, amount, status, transaction_date, transaction_type, flag_large_amount
+2025-05-07 21:00:33,177 - WARNING - Filtered out 3000 rows with existing primary keys in transactions
+2025-05-07 21:00:33,178 - WARNING - No rows to insert after filtering for transactions
+2025-05-07 21:00:33,181 - INFO - Recorded metadata for t03.csv: 0/3000 rows, 3000 errors
+2025-05-07 21:00:33,181 - INFO - Completed t03.csv to transactions: 0/3000 rows, 3000 errors in 0.05 seconds
+2025-05-07 21:00:33,182 - INFO - Processing t04.csv → logs
+2025-05-07 21:00:33,188 - INFO - Loaded 2014 rows from t04.csv
+2025-05-07 21:00:33,190 - INFO - Renamed 4 columns in logs: 04-00 → id, 04-01 → transaction_id, 04-02 → message, 04-03 → created_at
+2025-05-07 21:00:33,191 - INFO - Schema adjustments: id → log_id, created_at → event_timestamp
+2025-05-07 21:00:33,193 - INFO - Retrieved schema for logs: log_id, transaction_id, message, event_timestamp
+2025-05-07 21:00:33,202 - INFO - Converted event_timestamp to datetime, fixed 0 invalid values
+2025-05-07 21:00:33,203 - INFO - Data validation for logs: {'total': 2014, 'date_corrections': 0, 'email_corrections': 0, 'phone_corrections': 0, 'flags_added': 0}
+2025-05-07 21:00:33,206 - INFO - Retrieved schema for logs: log_id, transaction_id, message, event_timestamp
+2025-05-07 21:00:33,210 - WARNING - Filtered out 2014 rows with existing primary keys in logs
+2025-05-07 21:00:33,211 - WARNING - No rows to insert after filtering for logs
+2025-05-07 21:00:33,213 - INFO - Recorded metadata for t04.csv: 0/2014 rows, 2014 errors
+2025-05-07 21:00:33,213 - INFO - Completed t04.csv to logs: 0/2014 rows, 2014 errors in 0.03 seconds
+2025-05-07 21:00:33,214 - INFO - Processing t05.csv → reports
+2025-05-07 21:00:33,217 - INFO - Loaded 92 rows from t05.csv
+2025-05-07 21:00:33,218 - INFO - Renamed 6 columns in reports: 05-00 → id, 05-01 → report_type, 05-02 → created_at, 05-03 → total_transactions, 05-04 → flagged_transactions, 05-05 → total_amount
+2025-05-07 21:00:33,219 - INFO - Schema adjustments: id → report_id, created_at → generated_date
+2025-05-07 21:00:33,222 - INFO - Retrieved schema for reports: report_id, report_type, generated_date, total_transactions, flagged_transactions, total_amount
+2025-05-07 21:00:33,230 - INFO - Converted generated_date to datetime, fixed 0 invalid values
+2025-05-07 21:00:33,231 - INFO - Data validation for reports: {'total': 92, 'date_corrections': 0, 'email_corrections': 0, 'phone_corrections': 0, 'flags_added': 0}
+2025-05-07 21:00:33,234 - INFO - Retrieved schema for reports: report_id, report_type, generated_date, total_transactions, flagged_transactions, total_amount
+2025-05-07 21:00:33,237 - WARNING - Filtered out 92 rows with existing primary keys in reports
+2025-05-07 21:00:33,239 - WARNING - No rows to insert after filtering for reports
+2025-05-07 21:00:33,241 - INFO - Recorded metadata for t05.csv: 0/92 rows, 92 errors
+2025-05-07 21:00:33,242 - INFO - Completed t05.csv to reports: 0/92 rows, 92 errors in 0.03 seconds
+2025-05-07 21:00:33,243 - INFO - Processing t07.csv → scheduled_payments
+2025-05-07 21:00:33,249 - INFO - Loaded 800 rows from t07.csv
+2025-05-07 21:00:33,252 - INFO - Renamed 7 columns in scheduled_payments: 07-00 → id, 07-01 → user_id, 07-02 → card_id, 07-03 → amount, 07-04 → payment_date, 07-05 → status, 07-06 → created_at
+2025-05-07 21:00:33,254 - INFO - Dropped columns not in schema: user_id, created_at
+2025-05-07 21:00:33,255 - INFO - Schema adjustments: id → schedule_id, amount → payment_amount, payment_date → schedule_date, card_id → card_id
+2025-05-07 21:00:33,258 - INFO - Retrieved schema for scheduled_payments: schedule_id, card_id, payment_amount, schedule_date, status
+2025-05-07 21:00:33,265 - INFO - Converted schedule_date to datetime, fixed 0 invalid values
+2025-05-07 21:00:33,266 - INFO - Data validation for scheduled_payments: {'total': 800, 'date_corrections': 0, 'email_corrections': 0, 'phone_corrections': 0, 'flags_added': 0}
+2025-05-07 21:00:33,269 - INFO - Retrieved schema for scheduled_payments: schedule_id, card_id, payment_amount, schedule_date, status
+2025-05-07 21:00:33,273 - WARNING - Filtered out 800 rows with existing primary keys in scheduled_payments
+2025-05-07 21:00:33,274 - WARNING - No rows to insert after filtering for scheduled_payments
+2025-05-07 21:00:33,276 - INFO - Recorded metadata for t07.csv: 0/800 rows, 800 errors
+2025-05-07 21:00:33,277 - INFO - Completed t07.csv to scheduled_payments: 0/800 rows, 800 errors in 0.03 seconds
+2025-05-07 21:00:33,278 - WARNING - Missing file: derived_blocked_cards.csv
+2025-05-07 21:00:33,279 - WARNING - Missing file: derived_fraud_detection.csv
+2025-05-07 21:00:33,279 - WARNING - Missing file: derived_vip_users.csv
+2025-05-07 21:00:33,280 - INFO - ETL process completed in 0.30 seconds

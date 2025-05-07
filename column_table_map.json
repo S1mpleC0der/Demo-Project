@@ -1,0 +1,113 @@
+{
+    "01": {
+        "table": "users",
+        "file": "t01.csv",
+        "prefix": "01-XX",
+        "columns": {
+            "00": "id",
+            "01": "name",
+            "02": "phone_number",
+            "03": "email",
+            "04": "created_at",
+            "05": "last_active_at",
+            "07": "is_vip",
+            "08": "total_balance"
+        }
+    },
+    "02": {
+        "table": "cards",
+        "file": "t02.csv",
+        "prefix": "02-XX",
+        "columns": {
+            "00": "id",
+            "01": "user_id",
+            "02": "card_number",
+            "03": "balance",
+            "05": "created_at",
+            "06": "card_type",
+            "07": "limit_amount"
+        }
+    },
+    "03": {
+        "table": "transactions",
+        "file": "t03.csv",
+        "prefix": "03-XX",
+        "columns": {
+            "00": "id",
+            "01": "from_card_id",
+            "02": "to_card_id",
+            "03": "amount",
+            "04": "status",
+            "05": "created_at",
+            "06": "transaction_type"
+        }
+    },
+    "04": {
+        "table": "logs",
+        "file": "t04.csv",
+        "prefix": "04-XX",
+        "columns": {
+            "00": "id",
+            "01": "transaction_id",
+            "02": "message",
+            "03": "created_at"
+        }
+    },
+    "05": {
+        "table": "reports",
+        "file": "t05.csv",
+        "prefix": "05-XX",
+        "columns": {
+            "00": "id",
+            "01": "report_type",
+            "02": "created_at",
+            "03": "total_transactions",
+            "04": "flagged_transactions",
+            "05": "total_amount"
+        }
+    },
+    "07": {
+        "table": "scheduled_payments",
+        "file": "t07.csv",
+        "prefix": "07-XX",
+        "columns": {
+            "00": "id",
+            "01": "user_id",
+            "02": "card_id",
+            "03": "amount",
+            "04": "payment_date",
+            "05": "status",
+            "06": "created_at"
+        }
+    },
+    "BLCK": { 
+        "table": "blocked_cards",
+        "file": "derived_blocked_cards.csv",
+        "columns": {
+            "card_id": "card_id",
+            "reason": "reason",
+            "blocked_at": "blocked_at"
+        }
+    },
+    "FRD": { 
+        "table": "fraud_detection",
+        "file": "derived_fraud_detection.csv",
+        "columns": {
+            "transaction_id": "transaction_id",
+            "from_card_id": "from_card_id",
+            "user_id": "user_id",
+            "reason": "reason",
+            "status": "status",
+            "created_at": "created_at"
+        }
+    },
+    "VIP": {
+        "table": "vip_users",
+        "file": "derived_vip_users.csv",
+        "columns": {
+            "user_id": "user_id",
+            "assigned_at": "assigned_at",
+            "reason": "reason"
+        }
+    }
+} 
